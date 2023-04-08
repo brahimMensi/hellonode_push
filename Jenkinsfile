@@ -2,7 +2,7 @@ podTemplate(yaml: '''
 kind: Pod
 metadata:
   name: kaniko
-  namespace: ali
+  namespace: ibrahim
 spec:
   containers:
   - name: kaniko
