@@ -19,12 +19,14 @@ spec:
     def IMAGE_PUSH_DESTINATION="ibrahim999/hellonode"
     stage('Build with Kaniko') {
         checkout scm
+        
         container(name: 'kaniko', shell: '/busybox/sh') {
             withCredentials([file(credentialsId: 'docker-credentials', variable: 'DOCKER_CONFIG_JSON')]) {
                 withEnv(['PATH+EXTRA=/busybox',"IMAGE_PUSH_DESTINATION=${IMAGE_PUSH_DESTINATION}"]) {
                     sh '''#!/busybox/sh
                         cp $DOCKER_CONFIG_JSON /kaniko/.docker/config.json
-                        /kaniko/executor --context `pwd` --destination $IMAGE_PUSH_DESTINATION
+                        echo "on est à cette étape"
+                        #kaniko/executor --context `pwd` --destination $IMAGE_PUSH_DESTINATION
                     '''
                 }
             }
