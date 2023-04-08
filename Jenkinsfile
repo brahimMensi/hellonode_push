@@ -16,7 +16,7 @@ spec:
     tty: true
 '''){
   node(POD_LABEL) {
-    def IMAGE_PUSH_DESTINATION="samirathorizon/hellonode"
+    def IMAGE_PUSH_DESTINATION="ibrahim999/hellonode"
     stage('Build with Kaniko') {
         checkout scm
         container(name: 'kaniko', shell: '/busybox/sh') {
